@@ -28,6 +28,7 @@ module.exports = function(grunt) {
 			content.join( grunt.util.normalizelf(grunt.util.linefeed) );
 
 			grunt.file.write(f.dest, content);
+			grunt.log.writeln('File ' + f.dest + ' created.');
 		});
 	});
 
@@ -95,7 +96,7 @@ module.exports = function(grunt) {
 			collapseWhitespace: true
 		};
 		try {
-			return require('html-minifier').minify(source, config);
+			return require('html-minifier').minify(source, config).replace(/\r?\n/g, ' ');
 		} catch (e) {
 			grunt.log.error(e);
 			grunt.fail.warn('html minification failed.');
