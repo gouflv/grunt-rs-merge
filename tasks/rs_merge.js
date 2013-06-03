@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 
 	var modules_path = require('path');
 
-	grunt.registerMultiTask('js_merge', 'js-merge desc', function() {
+	grunt.registerMultiTask('rs_merge', 'rs-merge desc', function() {
 
 		var option = this.options({});
 

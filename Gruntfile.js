@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 			tests: ['tmp']
 		},
 
-		js_merge: {
+		rs_merge: {
 			ad_merge_task: {
 				files: {
 					'test/expected/main.js': [
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-	grunt.registerTask('test', ['clean', 'js_merge']);
+	grunt.registerTask('test', ['clean', 'rs_merge']);
 
 	grunt.registerTask('default', ['jshint', 'test']);
 
