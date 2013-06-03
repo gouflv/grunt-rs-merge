@@ -1,6 +1,6 @@
 {
   "name": "grunt-rs-merge",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "gouflv",
     "email": "lv.gouf@gmail.com"
@@ -10,7 +10,7 @@
     "url" : "https://github.com/gouflv/grunt-rs-merge.git"
   },
   "main": "Gruntfile.js",
-  "devDependencies": {
+  "dependencies": {
     "clean-css": "~1.0.0",
     "html-minifier": "~0.5.0",
     "grunt-contrib-jshint": "~0.1.1",
@@ -20,6 +20,5 @@
   },
   "keywords": [
     "gruntplugin"
-  ],
-  "private": true
+  ]
 }
