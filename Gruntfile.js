@@ -37,6 +37,21 @@ module.exports = function(grunt) {
 			}
 		},
 
+		uglify: {
+			options: {
+				preserveComments: false,
+				mangle: false,
+				beautify : {
+					ascii_only : true
+				}
+			},
+			dist: {
+				files: {
+					'test/expected/main.min.js': ['test/expected/main.js']
+				}
+			}
+		},
+
 		nodeunit: {
 			tests: ['test/*_test.js']
 		},
@@ -47,8 +62,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 
-	grunt.registerTask('test', ['clean', 'rs_merge']);
+	grunt.registerTask('test', ['clean', 'rs_merge', 'uglify']);
 
 	grunt.registerTask('default', ['jshint', 'test']);
 

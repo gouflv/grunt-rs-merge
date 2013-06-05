@@ -11,7 +11,6 @@
 module.exports = function(grunt) {
 
 	var modules_path = require('path');
-	var escape = require('./lib/escape');
 
 	grunt.registerMultiTask('rs_merge', 'rs-merge desc', function() {
 
@@ -103,12 +102,12 @@ module.exports = function(grunt) {
 	};
 
 	var htmlParse = function(content) {
-		return escape.js( content.replace(/\'/g, '\\\'').replace(/\s+\r?\n\s+/g, ' ') );
+		return content.replace(/\'/g, '\\\'').replace(/\s+\r?\n\s+/g, ' ');
 	};
 
 
 	var cssParse = function(content) {
-		return escape.js( content.replace(/\'/g, '\"') );
+		return content.replace(/\'/g, '\"');
 	};
 
 };
