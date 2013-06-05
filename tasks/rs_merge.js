@@ -11,6 +11,7 @@
 module.exports = function(grunt) {
 
 	var modules_path = require('path');
+	var escape = require('./lib/escape');
 
 	grunt.registerMultiTask('rs_merge', 'rs-merge desc', function() {
 
@@ -25,9 +26,7 @@ module.exports = function(grunt) {
 				return fileInclude(src);
 			});
 
-			content.join( grunt.util.normalizelf(grunt.util.linefeed) );
-
-			grunt.file.write(f.dest, content);
+			grunt.file.write(f.dest, content.join(grunt.util.normalizelf(grunt.util.linefeed)));
 			grunt.log.writeln('File ' + f.dest + ' created.');
 		});
 	});
@@ -38,12 +37,12 @@ module.exports = function(grunt) {
 		fileExp.forEach(function(f) {
 
 			if( modules_path.extname(f.path) === '.css' ) {
-				f.file = jsParse( 
+				f.file = cssParse( 
 					minifyCSS( grunt.file.read(f.path) )
 				);
 
 			} else if( modules_path.extname(f.path).match('.html?') ) {
-				f.file = jsParse(
+				f.file = htmlParse(
 					minifyHTML( grunt.file.read(f.path) )
 				);
 
@@ -96,15 +95,20 @@ module.exports = function(grunt) {
 			collapseWhitespace: true
 		};
 		try {
-			return require('html-minifier').minify(source, config).replace(/\r?\n/g, ' ');
+			return require('html-minifier').minify(source, config);
 		} catch (e) {
 			grunt.log.error(e);
 			grunt.fail.warn('html minification failed.');
 		}
 	};
 
-	var jsParse = function(content) {
-		return content.replace(/\'/g, '\\\'');
+	var htmlParse = function(content) {
+		return escape.js( content.replace(/\'/g, '\\\'').replace(/\s+\r?\n\s+/g, ' ') );
+	};
+
+
+	var cssParse = function(content) {
+		return escape.js( content.replace(/\'/g, '\"') );
 	};
 
 };
