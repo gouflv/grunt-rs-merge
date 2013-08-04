@@ -12,26 +12,24 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		jshint: {
-			all: [
-					'Gruntfile.js',
-					'tasks/*.js',
-					'<%= nodeunit.tests %>'
-			],
 			options: {
 				jshintrc: '.jshintrc'
-			}
+			},
+			all: [
+				'tasks/*.js',
+				'test/expected/*.js'
+			]
 		},
 
 		clean: {
-			tests: ['tmp']
+			tests: ['test/expected']
 		},
 
 		rs_merge: {
 			ad_merge_task: {
 				files: {
 					'test/expected/main.js': [
-						'test/fixtures/main.js',
-						'test/fixtures/ext.js'
+						'test/fixtures/main.js'
 					]
 				}
 			}
@@ -47,25 +45,19 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'test/expected/main.min.js': ['test/expected/main.js']
+					'test/expected/main.min.js': [
+						'test/expected/main.js'
+					]
 				}
 			}
-		},
-
-		nodeunit: {
-			tests: ['test/*_test.js']
-		},
-
+		}
 	});
 
 	grunt.loadTasks('tasks');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 
-	grunt.registerTask('test', ['clean', 'rs_merge', 'uglify']);
-
-	grunt.registerTask('default', ['jshint', 'test']);
+	grunt.registerTask('default', ['clean', 'rs_merge', 'uglify']);
 
 };
