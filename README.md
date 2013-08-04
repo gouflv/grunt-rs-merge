@@ -1,6 +1,6 @@
 # grunt-rs-merge
 
-脚本资源嵌入插件
+如果你每次看到js里出现大段大段的html代码或者样式就菊紧的话,那就请往下看吧 ... 当然你最好稍微了解过Gruntjs
 
 ## 安装
 ``npm install git://github.com/gouflv/grunt-rs-merge --save-dev``
@@ -28,7 +28,7 @@ grunt.loadNpmTasks('grunt-rs-merge');
 ```
 
 ###文件匹配规则	
-files为grunt内置的文件选择器之一, 详细参考[Gruntjs Files Object Format](http://gruntjs.com/configuring-tasks#files-object-format)
+``files``为grunt内置的文件选择器之一, 详细参考[Gruntjs Files Object Format](http://gruntjs.com/configuring-tasks#files-object-format)
 
 其中key值为目标地址, value为源文件数组
 
@@ -62,14 +62,9 @@ var tmpl = '<h1>testing something</h1>';
 $(tmpl).appendTo(document.body);
 ```
 
-##实现思路
-正则匹配js文件中的**include**描述符, 抓取到文件路径后将文件读入, 执行压缩和转义等操作, 最后替换回描述符内.
-
-引入的文件既可以是静态页面, 也可以是页面模板, 最终都将以字符串形式赋值到目标文件的变量中被程序所用, 这也是为何直接在字符串内做描述符的原因.
-
-在组建类开发中, 将模板或页面结构独立于脚本进行维护, 更易于维护
 
 ##测试
-``clone``本工程到本地后, 执行``npm install``安装相关依赖, 最后执行``grunt``即可测试
+``clone``本工程到本地后, 执行``npm install``安装相关依赖, 最后执行``grunt``即可运行测试
 
-详细测试代码见``Gruntfile.js``
+详细代码见[Gruntfile.js](Gruntfile.js) 
+
