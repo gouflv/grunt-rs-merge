@@ -1,6 +1,7 @@
 # grunt-rs-merge
 
-如果你每次看到js里出现大段大段的html代码或者样式就菊紧的话,那就请往下看吧 ... 当然你最好稍微了解过Gruntjs
+提供js中的内容嵌入机制, 可以将页面结构或样式资源独立于js进行维护   
+如果你每次看到js里出现大段大段的html代码或者样式就菊紧的话, 那么不妨一试
 
 ## 安装
 ``npm install git://github.com/gouflv/grunt-rs-merge --save-dev``
