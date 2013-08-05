@@ -102,7 +102,7 @@ module.exports = function(grunt) {
 	};
 
 	var htmlParse = function(content) {
-		return content.replace(/\'/g, '\\\'').replace(/\s+\r?\n\s+/g, ' ');
+		return content.replace(/\'/g, '\\\'').replace(/\s*\r?\n\s*/g, ' ');
 	};
 
 
