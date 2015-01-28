@@ -38,9 +38,11 @@ rs_merge将扫描源文件(test/fixtures/main.js)中的**资源描述符**, 并�
 ##资源描述符
 grunt-rs-merge支持html和css的引入, 并内置`格式压缩` `特殊字符转义` `中文转ascii`功能
 
-描述符采用字符串形式声明``'<%include "path/foo.html" %>'``, 代码实例:
+描述符采用字符串形式声明``'<%include "path/foo.html" %>'``, 
 
-1. 源文件
+## 代码实例
+
+### 源文件
 `test/fixtures/main.js`
 
 ```javascript
@@ -49,14 +51,14 @@ var tmpl = '<%include "path/foo.html" %>';
 $(tmpl).appendTo(document.body);
 ```
 
-2. 被引入页面的内容
+### 被引入页面的内容
 `path/foo.html`
 
 ```html
 <h1>testing something</h1>
 ```
 
-3. 执行结果: html文件的页面内容编入到main.js的tmpl变量中
+### 执行结果: html文件的页面内容编入到main.js的tmpl变量中
 
 目标文件`test/expected/main.js`
 
